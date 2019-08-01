@@ -7,12 +7,74 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/req"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
 
+    <TextView
+        android:id="@+id/rep"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/req"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <Button
+        android:id="@+id/get"
+        android:text="get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rep"
+        />
+
+    <Button
+        android:id="@+id/postJson"
+        android:text="postJson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/get"
+        />
+    <Button
+        android:id="@+id/postForm"
+        android:text="postForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/postJson"
+        />
+    <Button
+        android:id="@+id/postFormJson"
+        android:text="postFormJson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/postForm"
+        />
+    <Button
+        android:id="@+id/postFile"
+        android:text="postFile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/postFormJson"
+        />
+    <Button
+        android:id="@+id/getJson"
+        android:text="getJson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/postFile"
+        />
+    <Button
+        android:id="@+id/postString"
+        android:text="postString"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/getJson"
+        />
+    <Button
+        android:id="@+id/postStream"
+        android:text="postStream"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/postString"
+        />
 </android.support.constraint.ConstraintLayout>

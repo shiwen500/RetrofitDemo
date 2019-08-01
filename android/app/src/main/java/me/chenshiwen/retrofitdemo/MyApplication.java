@@ -7,6 +7,7 @@ import android.os.Process;
 import android.util.Log;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 
@@ -27,6 +28,7 @@ public class MyApplication extends Application {
 
     private void initOkHttpClient() {
         mOkHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(20, TimeUnit.SECONDS)
                 .build();
     }
 

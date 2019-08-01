@@ -9,8 +9,8 @@ public class APiConstant {
     public static HttpUrl.Builder SERVER() {
         return new HttpUrl.Builder()
                 .scheme("http")
-                .host("10.1.199.115")
-                .port(8080);
+                .host("172.16.85.180")
+                .port(8088);
     }
     public static String GET_USER_NAME = "users/userName";
     public static String POST_USER = "users/addUser";
@@ -18,4 +18,6 @@ public class APiConstant {
     public static String POST_USER_FORM_JSON = "users/addUserFormJson";
     public static String POST_FILE = "users/postFile";
     public static String GET_JSON = "users/getJson";
+    public static String POST_STRING = "users/postString";
+    public static String POST_STREAM = "users/postStream";
 }

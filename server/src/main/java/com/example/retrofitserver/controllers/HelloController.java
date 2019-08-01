@@ -36,8 +36,8 @@ public class HelloController {
         return "ok";
     }
     @RequestMapping(value = "/addUserForm", method = RequestMethod.POST)
-    public String addUserForm(@ModelAttribute("id") Long id, @ModelAttribute("name") String name) {
-        System.out.println("addUserForm : id -> " + id +  ", name -> " + name);
+    public String addUserForm(Long id, @ModelAttribute("name") String name, @RequestBody String body) {
+        System.out.println("addUserForm : id -> " + id +  ", name -> " + name + ",body => " + body);
         if (users.containsKey(id)) {
             return "error, user exists";
         } else {
@@ -76,5 +76,17 @@ public class HelloController {
         user.setId(1L);
         user.setName("csw");
         return user;
+    }
+
+    @PostMapping(value = "postString")
+    public String postString(@RequestBody String body) {
+        System.out.println("postString => body: " + body);
+        return "postString ok!";
+    }
+
+    @PostMapping(value = "postStream")
+    public String postStream(@RequestBody String body) {
+        System.out.println("postStream => body: " + body);
+        return "postStream ok!";
     }
 }
