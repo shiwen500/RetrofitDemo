@@ -1,9 +1,13 @@
 package com.example.retrofitserver.controllers;
 
 import com.example.retrofitserver.model.User;
+import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -87,5 +91,43 @@ public class HelloController {
     public String postStream(@RequestBody String body) {
         System.out.println("postStream => body: " + body);
         return "postStream ok!";
+    }
+
+    private void close(Closeable closeable) {
+        if (closeable == null) {
+            return;
+        }
+        try {
+            closeable.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @GetMapping("/download")
+    public void download(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("download");
+        File f = new File("pom.xml");
+        if (f.exists()) {
+            BufferedInputStream bis = null;
+            BufferedOutputStream bos = null;
+            try {
+                response.setContentType("application/force-download");// 设置强制下载不打开
+                response.addHeader("Content-Disposition", "attachment;fileName=mypom.xml");// 设置文件名
+                bis = new BufferedInputStream(new FileInputStream(f));
+                bos = new BufferedOutputStream(response.getOutputStream());
+                byte[] buff = new byte[1024];
+                int len = 0;
+                while ((len = bis.read(buff)) > 0) {
+                    bos.write(buff, 0, len);
+                }
+                bos.flush();
+            } catch (Exception e) {
+
+            } finally {
+                close(bis);
+                close(bos);
+            }
+        }
     }
 }

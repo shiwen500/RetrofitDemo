@@ -121,4 +121,13 @@ public class HelloControllerTests {
         mvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+    @Test
+    public void testDownload() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(url("/download"));
+        String response = mvc.perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        System.out.println("response: " + response);
+    }
 }
