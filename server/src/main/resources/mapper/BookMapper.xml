@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.retrofitserver.mapper.BookMapper">
+    <resultMap id="book" type="com.example.retrofitserver.model.Book">
+        <result column="id" property="id"/>
+        <result column="name" property="name" />
+    </resultMap>
+    <select id="getBookById" resultType="com.example.retrofitserver.model.Book">
+        SELECT * FROM t_book WHERE id = #{id}
+    </select>
+    <insert id="addBook" parameterType="com.example.retrofitserver.model.Book" useGeneratedKeys="true" keyColumn="id" keyProperty="book.id">
+        INSERT INTO t_book (name) VALUES (#{book.name})
+    </insert>
+    <delete id="deleteBookByName" >
+        DELETE FROM t_book WHERE name = #{name}
+    </delete>
+    <select id="getBooks" resultMap="book">
+        SELECT * from t_book
+    </select>
+    <update id="updateBookNameById">
+        UPDATE t_book SET name = #{name} WHERE id = #{id}
+    </update>
+    <select id="getBooksByAuthorId" resultMap="book">
+        SELECT a.id AS id, a.name AS name
+        FROM t_book a INNER JOIN t_author b
+        ON a.author_id = b.id
+        WHERE a.author_id = #{authorId}
+    </select>
+    <select id="getBooksByAuthorId2" resultType="java.util.HashMap">
+        SELECT a.id AS id, a.name AS name, b.author_name AS authorName
+        FROM t_book a INNER JOIN t_author b
+        ON a.author_id = b.id
+        WHERE a.author_id = #{authorId}
+    </select>
+</mapper>

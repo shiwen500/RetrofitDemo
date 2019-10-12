@@ -1,7 +1,6 @@
 package com.example.retrofitserver.controllers;
 
 import com.example.retrofitserver.model.User;
-import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
