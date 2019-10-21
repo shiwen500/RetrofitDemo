@@ -4,6 +4,8 @@ public class Book {
     private Long id;
     private String Name;
 
+    public Book() {}
+
     public Book(Long id, String name) {
         this.id = id;
         Name = name;

@@ -19,6 +19,7 @@
 		<mybatis-spring-boot>1.2.0</mybatis-spring-boot>
 		<mysql-connector>5.1.39</mysql-connector>
 		<fastjson.version>1.2.29</fastjson.version>
+		<pagehelp.version>1.2.12</pagehelp.version>
 	</properties>
 
 	<dependencies>
@@ -49,6 +50,11 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>${pagehelp.version}</version>
 		</dependency>
 	</dependencies>
 

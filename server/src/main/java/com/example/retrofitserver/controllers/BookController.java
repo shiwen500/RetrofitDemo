@@ -2,6 +2,8 @@ package com.example.retrofitserver.controllers;
 
 import com.example.retrofitserver.model.Book;
 import com.example.retrofitserver.services.IBookService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,5 +66,12 @@ public class BookController {
     @GetMapping("/getBooksByAuthorId2")
     public List<Map> getBooksByAuthorId2(@RequestParam Long authorId) {
         return service.getBooksByAuthorId2(authorId);
+    }
+
+    // 分页查询book
+    @GetMapping("/getBooksPage")
+    public PageInfo<Book> getBooks(@RequestParam int pageSize, @RequestParam int pageNum) {
+        PageHelper.startPage(pageNum, pageSize);
+        return new PageInfo<>(service.getBooks());
     }
 }

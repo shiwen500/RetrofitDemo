@@ -90,4 +90,15 @@ public class BookControllerTests {
                 .andReturn().getResponse().getContentAsString();
         System.out.println("response: " + response);
     }
+
+    @Test
+    public void testGetBooksPage() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/book/getBooksPage")
+                .param("pageNum", "1")
+                .param("pageSize", "2");
+        String response = mvc.perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        System.out.println("response: " + response);
+    }
 }
